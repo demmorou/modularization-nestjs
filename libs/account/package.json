@@ -1,0 +1,24 @@
+{
+  "name": "@core/account",
+  "version": "1.2.0",
+  "betaVersion": "1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && npm run build:types && npm run build:js",
+    "build:js": "babel src --root-mode upward --out-dir dist --extensions .ts --no-comments --copy-files",
+    "build:types": "pnpm tsc --project tsconfig.lib.json",
+    "test": "jest",
+    "lint": "eslint \"{src,test}/**/*.ts\" --fix",
+    "publish:local": "npm publish --registry=http://localhost:4873/ --force"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.10",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.4"
+  }
+}
