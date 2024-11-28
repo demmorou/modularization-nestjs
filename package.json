@@ -9,7 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -23,14 +23,20 @@
     "libs/*"
   ],
   "dependencies": {
+    "@apollo/server": "^4.11.2",
+    "@nestjs/apollo": "^12.2.1",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
+    "@nestjs/graphql": "^12.2.1",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/swagger": "^7.3.1",
     "class-transform": "^0.7.0",
     "express": "^4.19.2",
+    "graphql": "^16.9.0",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rimraf": "^5.0.8",
+    "rxjs": "^7.8.1",
+    "ts-morph": "^24.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
@@ -76,7 +82,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/account(|/.*)$": "<rootDir>/libs/account/src/$1"
+      "^@app/account(|/.*)$": "<rootDir>/libs/account/src/$1",
+      "^@app/order(|/.*)$": "<rootDir>/libs/order/src/$1"
     }
   }
 }

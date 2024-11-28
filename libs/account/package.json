@@ -1,19 +1,25 @@
 {
-  "name": "@core/account",
-  "version": "1.2.0",
+  "name": "@modules/account",
+  "version": "1.0.0",
   "betaVersion": "1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && npm run build:types && npm run build:js",
+    "build": "rimraf dist && tsc -p tsconfig.lib.json",
     "build:js": "babel src --root-mode upward --out-dir dist --extensions .ts --no-comments --copy-files",
-    "build:types": "pnpm tsc --project tsconfig.lib.json",
+    "build:types": "pnpm tsc --project tsconfig.build.json",
     "test": "jest",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
-    "publish:local": "npm publish --registry=http://localhost:4873/ --force"
+    "publish:local": "npm publish --registry=http://localhost:4873/ --force",
+    "unpublish:local": "npm unpublish @modules/account --registry=http://localhost:4873/ --force --verbose",
+    "codegen": "graphql-codegen --config src/main/graphql/codegen.ts"
   },
   "dependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.6",
+    "@graphql-codegen/typescript-resolvers": "^4.0.6",
+    "@nestjs/swagger": "^7.3.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",

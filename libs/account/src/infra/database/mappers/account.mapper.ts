@@ -9,7 +9,7 @@ export class AccountDatabaseMapper {
       firstName: account.firstName,
       id: account.id,
       lastLogin: new Date(account.lastLogin),
-      lastName: account.lastLogin,
+      lastName: account.lastName,
       username: account.username,
     };
   }

@@ -12,6 +12,8 @@
   },
   "moduleNameMapper": {
     "@app/account/(.*)": "<rootDir>/../libs/account/src/$1",
-    "@app/account": "<rootDir>/../libs/account/src"
+    "@app/account": "<rootDir>/../libs/account/src",
+    "@app/order/(.*)": "<rootDir>/../libs/order/src/$1",
+    "@app/order": "<rootDir>/../libs/order/src"
   }
 }
