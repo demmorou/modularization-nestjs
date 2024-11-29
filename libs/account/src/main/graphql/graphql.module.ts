@@ -1,20 +1,19 @@
 import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { GraphQLModule as NestGraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverAsyncConfig } from '@nestjs/apollo';
+import { YogaDriver, YogaDriverConfig } from '@graphql-yoga/nestjs';
 
 import { ResolversModule } from './resolvers';
 import { GetAccountResolver } from './resolvers/get-account.resolver';
 
 @Module({
   imports: [
-    NestGraphQLModule.forRootAsync<ApolloDriverAsyncConfig | any>({
+    NestGraphQLModule.forRootAsync<YogaDriverConfig>({
       imports: [ResolversModule],
       inject: [GetAccountResolver],
-      driver: ApolloDriver,
+      driver: YogaDriver,
       useFactory: (getAccountResolver: GetAccountResolver) => {
         return {
-          driver: ApolloDriver,
           typePaths: ['./**/*.graphql'],
           definitions: {
             path: join(__dirname, '__generated-types.ts'),
